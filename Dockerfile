@@ -1,7 +1,8 @@
 FROM centos:7
 MAINTAINER Tobias Brunner <tobias@tobru.ch>
 
-ENV OTR_STORAGEDIR="/var/spool/owntracks/recorder/store"
+ENV OTR_STORAGEDIR="/var/spool/owntracks/recorder/store" \
+    OTR_CAFILE="/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem"
 
 RUN curl -o /etc/yum.repos.d/mosquitto.repo http://download.opensuse.org/repositories/home:/oojah:/mqtt/CentOS_CentOS-7/home:oojah:mqtt.repo && \
     curl -o /etc/yum.repos.d/owntracks.repo http://repo.owntracks.org/centos/owntracks.repo && \
