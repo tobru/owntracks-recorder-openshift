@@ -10,6 +10,9 @@ RUN curl -o /etc/yum.repos.d/mosquitto.repo http://download.opensuse.org/reposit
     chmod +x /usr/local/bin/dumb-init && \
     yum -y install ot-recorder && \
     yum clean all && \
+    # Permission preparations for OpenShift
+    chgrp 0 /etc/default/ot-recorder && \
+    chmod a-s /usr/sbin/ot-recorder && \
     mkdir -p /var/spool/owntracks/recorder/store && \
     chgrp -R 0 /var/spool/owntracks/recorder/store && \
     chmod -R g+rwX /var/spool/owntracks/recorder/store
